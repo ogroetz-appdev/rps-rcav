@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   # Add your actions below this line
   # ================================
 
+  def homepage
+    render({ :template => "game_templates/rules.html.erb" })
+  end
+
   def play_rock
     # redirect_to("https://www.wikipedia.org")
     # render({ :plain => "Hello World!"}) #  renders plain text
@@ -11,4 +15,18 @@ class ApplicationController < ActionController::Base
     render({ :template => "game_templates/user_rock.html.erb" }) # embedded ruby template
   end
 
+  def play_paper
+    # @ --> instance variable available in user_paper file now
+    @comp_move = ["rock", "paper", "scissors"].sample
+
+    if @comp_move == "rock"
+      @outcome = "won"
+    elsif @comp_move == "paper"
+      @outcome = "tied"
+    elsif @comp_move == "scissors"
+      @outcome = "lost"
+    end
+
+    render({ :template => "game_templates/user_paper.html.erb" })
+  end
 end
