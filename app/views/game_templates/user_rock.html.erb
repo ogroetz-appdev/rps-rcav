@@ -1,0 +1,19 @@
+<h1>We played rock!</h1>
+
+<%#invisible%>
+<% comp_move = ["rock", "paper", "scissors"].sample %> <%# won't see this line bc no equal sign in embedded ruby code %>
+
+<%#visible%>
+<h1>
+  They played <%= comp_move %>! <%# comment: embedded ruby tag...write ruby code in these directly in html %> 
+</h1>
+
+
+<% if comp_move == "rock" %>
+<h2>We tied!</h2>
+<% elsif comp_move == "paper" %>
+<h2>We lost!</h2>
+<% elsif comp_move == "scissors" %>
+<h2>We won!</h2>
+<% end %>
+  
